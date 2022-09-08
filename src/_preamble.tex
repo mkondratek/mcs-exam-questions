@@ -1,0 +1,144 @@
+\usepackage[utf8]{inputenc}  %% for PL
+\exhyphenpenalty=10000       %% for PL
+\usepackage[T1]{polski}      %% for PL
+%\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{hyphsubst}
+\usepackage{tipa}
+\emergencystretch=2em
+
+% hyphen issue
+% https://tex.stackexchange.com/questions/284168/no-hyphenation-patterns-were-preloaded
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{blindtext}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{graphics}
+\usepackage[pdftex]{graphicx} \graphicspath{{./plots/}}
+\usepackage{epstopdf} \epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+\usepackage{float} % figure groups aka floats
+\usepackage{forest} % for MFS elimination tree diagram
+\usepackage[left=3.5cm, right=2.5cm, top=2.5cm, bottom=3.5cm]{geometry} % margins
+\usepackage{changepage}
+\usepackage[shellescape,latex]{gmp} % metapost for UMLs
+\usepackage[hidelinks]{hyperref} % ToC/LoA/LoF/LoT entries are links
+\usepackage{mathptmx} % Times New Roman like font
+\usepackage{pdfpages} % for inserting pdf as the initial pages
+\usepackage{setspace} \onehalfspacing % 1.5 line spacing
+\usepackage{subcaption}
+\usepackage{xfrac} % nice slanted fractions
+\usepackage{tabularx}
+\usepackage{mathtools}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\usepackage{tocloft}
+%\cftsetindents{section}{0.2in}{0.7in}
+\cftsetindents{subsection}{0.619in}{0.67in}
+\cftsetindents{subsubsection}{0.619in}{0.67in}
+\cftsetindents{paragraph}{0.619in}{0.67in}
+
+\usepackage[sorting=none,backend=biber,style=numeric,abbreviate=false,maxbibnames=9,bibencoding=auto,language=polish]{biblatex}  %backend=biber is 'better'
+%\usepackage[fixlanguage]{babelbib}
+
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{lipsum}
+
+\usepackage{svg}
+
+\usepackage{amsfonts}
+\usepackage{algorithmicx}
+
+\usepackage[export]{adjustbox}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{RGB}{54, 54, 54}
+\definecolor{codegray}{RGB}{71, 71, 69}
+\definecolor{codepurple}{RGB}{30, 99, 61}
+\definecolor{backcolor}{RGB}{252, 252, 250}
+\definecolor{darkblue}{RGB}{0, 32, 128}
+
+\lstdefinestyle{mystyle}{%
+    backgroundcolor=\color{backcolor},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{darkblue},
+    numberstyle=\footnotesize\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    columns=fullflexible,
+    frame=single,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    showspaces=false,
+    escapechar=|,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    aboveskip=1cm,
+    language=java,
+%    float=true,
+    floatplacement=H
+}
+\lstset{style=mystyle}
+
+\setlength{\headheight}{27pt}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\slshape\leftmark}
+\pagestyle{fancy}
+
+\captionsetup[figure]{labelfont={bf}, textfont={small}}
+\captionsetup[subfigure]{labelfont={bf}, textfont={small}}
+
+\newcommand{\bt}{\blindtext}
+\newcommand{\eps}{\varepsilon}
+%\newcommand{\rev}[1]{\textcolor{red}{#1}}
+\newcommand{\rev}[1]{#1}
+%\newcommand{\T}[1]{\texttt{#1}}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\algnewcommand\And{\,\textbf{and}\,}
+\algnewcommand\Or{\,\textbf{or}\,}
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\renewcommand{\lstlistingname}{\bfseries Code snippet}
+\renewcommand{\lstlistlistingname}{List of Code Snippets}
+
+\newenvironment{dedication}
+{
+   \cleardoublepage
+   \thispagestyle{empty}
+   \vspace*{\stretch{8}}
+   \hfill\begin{minipage}[t]{0.66\textwidth}
+   \raggedright
+}%
+{
+   \end{minipage}
+   \vspace*{\stretch{1}}
+   \clearpage
+}
+
+\theoremstyle{definition} % amsthm only
+\newtheorem{theorem}{Theorem}
