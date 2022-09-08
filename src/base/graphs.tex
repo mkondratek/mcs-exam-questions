@@ -1,1 +1,39 @@
 \section{Graf eulerowski, graf hamiltonowski, liczba chromatyczna grafu; definicje i związane z tymi pojęciami twierdzenia.}
+
+\subsection{Graf eulerowski}
+\textbf{Graf eulerowski} - da się w nim skonstruować \textbf{cykl Eulera}, czyli cykl,
+który przechodzi przez każdą jego krawędź dokładnie raz.
+
+\textbf{Warunek konieczny:} Warunkiem koniecznym i wystarczającym na to by spójny graf nieskierowany był eulerowski jest parzystość stopni wszystkich wierzchołków.
+Natomiast warunkiem w spójnym grafie skierowanym jest taka sama liczba krawędzi wchodzących i wychodzących dla każdego wierzchołka.
+
+\subsection{Graf hamiltonowski}
+\textbf{Graf hamiltonowski} - rodzaj grafu rozważany w teorii grafów i definiowany dwojako, w dwóch nieco innych znaczeniach:
+\begin{itemize}
+    \item szerszym: dowolny graf zawierający ścieżkę (drogę) przechodzącą przez każdy wierzchołek dokładnie jeden raz zwaną \textbf{ścieżką Hamiltona};
+    \item węższym: grafem hamiltonowskim jest graf zawierający \textbf{cykl Hamiltona}, tj. zamkniętą ścieżkę Hamiltona.
+\end{itemize}
+
+\textbf{Warunek konieczny:} Jeżeli graf $G$ jest hamiltonowski to dla każdego niepustego podzbioru $V^{\prime}$ zbioru wierzchołków $V(G)$ zachodzi
+\[
+    \omega(V(G) - V^{\prime}) \leqslant \left| V^{\prime} \right|
+\]
+gdzie $\omega (G)$ oznacza liczbę spójnych składowych grafu $G$.
+
+\subsection{Liczba chromatyczna}
+
+\textbf{Liczba chromatyczna} – liczba kolorów niezbędna do optymalnego klasycznego (wierzchołkowego) pokolorowania grafu,
+czyli najmniejsza możliwa liczba $k$ taka, że możliwe jest legalne pokolorowanie wierzchołków grafu $k$ kolorami.
+Oznacza się ją symbolem $\chi (G)$.
+
+Problem wyznaczenia liczby chromatycznej jest NP-trudny
+– nie są znane niezawodne wielomianowe algorytmy wyznaczające liczbę chromatyczną każdego grafu.
+Istnieje jednak szereg oszacowań liczby chromatycznej dla różnych klas grafów, np.:
+
+\begin{itemize}
+    \item $\chi (G)\geqslant \omega$, gdzie $\omega$  jest rozmiarem maksymalnej kliki grafu $G$,
+    \item Twierdzenie Brooksa: dla grafów pełnych oraz cykli o nieparzystej długości $\chi (G)=\Delta +1$,
+    gdzie $\Delta$  jest maksymalnym stopniem wierzchołka w grafie $G$;
+    \item dla pozostałych grafów spójnych zachodzi $ \chi (G)\leqslant \Delta$,
+    \item dla grafów planarnych  $\chi (G)\leqslant 4$, dla drzew o co najmniej dwóch wierzchołkach $\chi (G)=2$.
+\end{itemize}
