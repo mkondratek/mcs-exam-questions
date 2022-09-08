@@ -1,1 +1,158 @@
 \section{Ekstrema funkcji dwóch zmiennych: definicja i sposoby znajdowania.}
+
+Ekstremum funkcji to maksymalna lub minimalna wartość funkcji.
+
+\subsection{Definicja}
+
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Funkcja $f(x)$ przyjmuje w punkcie $x_{0}$ \textbf{maksimum lokalne} (odpowiednio: \textbf{minimum lokalne}),
+    jeśli w pewnym otwartym otoczeniu tego punktu (np. w pewnym przedziale otwartym)
+    funkcja nigdzie nie ma wartości większych (odpowiednio: mniejszych).
+
+    \item Jeśli dodatkowo w pewnym otwartym sąsiedztwie punktu $x_{0}$ funkcja nie ma również wartości równych $f(x_0)$,
+    to jest to \textbf{maksimum} (odpowiednio: \textbf{minimum}) \textbf{lokalne właściwe.}
+
+    \item Minima i maksima lokalne są zbiorczo nazywane \textbf{ekstremami lokalnymi}.
+
+    \item Największa i najmniejsza wartość funkcji w całej dziedzinie nazywane są odpowiednio
+    \textbf{maksimum i minimum globalnym}, a zbiorczo \textbf{ekstremami globalnymi}.
+\end{itemize}
+
+Istnieją funkcje nieposiadające ekstremów lokalnych ani globalnych, np. funkcja $f(x)=x$.
+
+\subsection{Sposoby znajdowania}
+
+\subsubsection{Algorytm wyznaczania ekstremów lokalnych funkcji dwóch zmiennych}
+
+Ekstrema lokalne funkcji dwóch zmiennych f(x,y) wyznaczamy wykonując następujące kroki:
+
+\begin{enumerate}
+    \item Liczymy pochodne cząstkowe pierwszego rzędu:
+    \[
+        \begin{matrix}
+            f^{\prime}_x=? \\
+            f^{\prime}_y=?
+        \end{matrix}
+    \]
+    \item Przyrównujemy te pochodne do zera, tworząc układ równań:
+    \[
+        \left\{\begin{matrix}
+                   f^{\prime}_x=0 \\
+                   f^{\prime}_y=0
+        \end{matrix}\right.
+    \]
+    \item Rozwiązujemy powyższy układ i otrzymujemy rozwiązania:
+    \[
+        \left\{\begin{matrix}
+                   x_1= \dots \\ y_1= \dots
+        \end{matrix}\right.
+        \quad
+        \text{lub}
+        \quad
+        \left\{\begin{matrix}
+                   x_2= \dots \\ y_2= \dots
+        \end{matrix}\right.
+        \quad
+        \text{lub}
+        \quad
+        \left\{\begin{matrix}
+                   x_3= \dots \\ y_3= \dots
+        \end{matrix}\right.
+        \quad
+        \text{lub}
+        \quad
+        \ldots
+    \]
+    Każde z powyższych rozwiązań jest punktem na płaszczyźnie $(x,y)$ w którym funkcja $f(x,y)$
+    może mieć (ale nie musi!) ekstremum lokalne.
+    Punkty te nazywamy \textbf{punktami stacjonarnymi}.
+    Jeśli funkcja nie ma punktów stacjonarnych, to automatycznie nie ma ekstremów.
+    \item Możemy wypisać wszystkie wyliczone punkty stacjonarne:
+    \[
+        P_1=(x_1,y_1)\text{,}\quad P_2=(x_2,y_2)\text{,}\quad P_3=(x_3,y_3)\text{,}\quad \dots
+    \]
+    W kolejnych krokach sprawdzimy, w których z powyższych punktów, funkcja ma ekstrema.
+    \item Liczymy pochodne cząstkowe drugiego rzędu:
+    \[
+        \begin{matrix}
+            f^{\prime\prime}_{xx}=? \\
+            f^{\prime\prime}_{xy}=? \\
+            f^{\prime\prime}_{yy}=? \\
+            f^{\prime\prime}_{yx}=? \\
+        \end{matrix}
+    \]
+    (Uwaga! Pochodne mieszane powinny wyjść takie same, tzn.: $f^{\prime\prime}_{xy}=f^{\prime\prime}_{yx}$.)
+    \item  Z otrzymanych pochodnych tworzymy wyznacznik:
+    \[
+        W=
+        \begin{vmatrix}
+            f^{\prime\prime}_{xx} & f^{\prime\prime}_{xy} \\
+            f^{\prime\prime}_{xy} & f^{\prime\prime}_{yy}
+        \end{vmatrix}
+    \]
+    (Uwaga! Ten wyznacznik może być złożony z funkcji)
+    \item Obliczamy powyższy wyznacznik kolejno dla wszystkich punktów stacjonarnych, czyli:
+    \[
+        W(P_1)\text{,}\quad W(P_2)\text{,}\quad W(P_3)\text{,}\quad \dots
+    \]
+    Przykładowo:
+    \[
+        W(P_1)=
+        \begin{vmatrix}
+            f^{\prime\prime}_{xx}(P_1) & f^{\prime\prime}_{xy}(P_1) \\
+            f^{\prime\prime}_{xy}(P_1) & f^{\prime\prime}_{yy}(P_1)
+        \end{vmatrix}
+        = \dots
+    \]
+    (Uwaga! Te wyznaczniki są złożone z liczb)
+    \item Sprawdzamy dla każdego punktu stacjonarnego czy istnieje w nim ekstremum:
+    \begin{itemize}
+        \item Jeżeli $W(P_1)>0$ to wtedy w punkcie $P_1$ funkcja osiąga ekstremum.
+        \item Jeżeli $W(P_1)<0$ to wtedy w punkcie $P_1$ funkcja nie osiąga ekstremum.
+        \item Jeżeli $W(P_1)=0$ to wtedy nie wiadomo czy w punkcie $P_1$ funkcja osiąga ekstremum.
+    \end{itemize}
+    Taką samą analizę przeprowadzamy również dla pozostałych punktów stacjonarnych.
+    \item Dalej zajmujemy się już tylko punktami w których funkcja osiąga ekstremum.
+    Załóżmy, że takim punktem jest np. punkt $P_1$.
+    Sprawdzamy dla takiego punktu czy jest w nim minimum, czy maksimum:
+    Jeżeli $f^{\prime\prime}_{xx}(P_1)>0$ to wtedy w punkcie $P_1$ funkcja ma minimum.
+    Jeżeli $f^{\prime\prime}_{xx}(P_1)<0$ to wtedy w punkcie $P_1$ funkcja ma maksimum.
+    I obliczamy wartość jaką przyjmuje funkcja w tym punkcie, licząc:
+    \[
+        f(P_1)= \dots
+    \]
+    \item Na koniec możemy spróbować rozstrzygnąć czy funkcja ma ekstrema w punktach stacjonarnych,
+    dla których wyzerował się wyznacznik.
+    Załóżmy, że takim punktem jest np. punkt $P_2=(x_2,y_2)$.
+    Analizujemy pod kątem ekstremów funkcje jednej zmiennej:
+    \[
+        f(x,y_2)= \dots \leftarrow \text{funkcja względem niewiadomej $x$}
+    \]
+    oraz
+    \[
+        f(x_2,y)= \dots \leftarrow \text{funkcja względem niewiadomej $y$}
+    \]
+    Policzyliśmy już wcześniej pierwsze i drugie pochodne tych funkcji.
+    Możemy stąd wyciągnąć pewne wnioski. Przykładowo:
+    \begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+        \item Jeżeli $f^{\prime}_x=0 \land f^{\prime\prime}_{xx}<0$ to funkcja $f(x,y_2)$ ma w punkcie $x=x_2$ lokalne maksimum.
+        \item Jeżeli $f^{\prime}_x=0 \land f^{\prime\prime}_{xx}>0$ to funkcja $f(x,y_2)$ ma w punkcie $x=x_2$ lokalne minimum.
+        \item Jeżeli $f^{\prime}_x=0 \land f^{\prime\prime}_{xx}=0$ to nie wiemy czy funkcja $f(x,y_2)$
+        ma w punkcie $x=x_2$ ekstremum lokalne.
+    \end{itemize}
+    W takiej sytuacji musimy sprawdzić czy pochodna $f^{\prime}_x(x,y_2)$ zmienia znak w punkcie $x=x2$
+    (np. rysując wykres tej pochodnej).
+    Jeżeli pochodna zmienia się z ujemnej na dodatnią, to mamy minimum, a jeśli z dodatniej na ujemną, to mamy maksimum.
+    Jeżeli pochodna nie zmienia znaku, to nie mamy ekstremum.
+    Gdy już wiemy czy funkcje jednej zmiennej przyjmują w punkcie $P_2$ ekstrema lokalne (i wiemy jakie to są ekstrema),
+    to możemy rozstrzygnąć kwestię ekstremów funkcji dwóch zmiennych:
+    \begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+        \item Jeżeli obie funkcje jednej zmiennej mają w punkcje $P_2$ ekstremum minimum, to wówczas funkcja $f(x,y)$
+        może mieć w punkcie $P_2$ ekstremum minimum, ale również może w ogóle nie mieć ekstremum
+        (w takim przypadku wiemy jedynie, że funkcja nie ma w punkcje $P_2$ ekstremum maksimum).
+        \item Jeżeli obie funkcje jednej zmiennej mają w punkcje $P_2$ ekstremum maksimum, to wówczas funkcja $f(x,y)$
+        może mieć w punkcie $P_2$ ekstremum maksimum, ale również może w ogóle nie mieć ekstremum
+        (w takim przypadku wiemy jedynie, że funkcja nie ma w punkcje $P_2$ ekstremum minimum).
+        \item W każdym innym przypadku funkcja $f(x,y)$ nie ma ekstremum w punkcie $P_2$
+    \end{itemize}
+\end{enumerate}
