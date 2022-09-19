@@ -1,1 +1,37 @@
 \section{Wektory i wartości własne macierzy; numeryczne algorytmy ich wyznaczania.}
+
+Wektory i wartości własne – wielkości opisujące endomorfizm danej przestrzeni liniowej;
+\textbf{wektor własny} przekształcenia można rozumieć jako wektor,
+którego kierunek nie ulega zmianie po przekształceniu go endomorfizmem;
+\textbf{wartość własna} odpowiadająca temu wektorowi to skala podobieństwa tych wektorów.
+
+\section{Wyznaczanie wektorów i wartości własnych}
+
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Szukamy pierwiastków wielomianu
+    \[
+        w(\lambda)=\det(\mathbf{A}-\lambda\mathbf{I})
+    \]
+    gdzie $\mathbf{A}$ jest macierzą kwadratową, $\mathbf{I}$ jest macierzą identycznościową,
+    a $w(\lambda)$ nazywamy \textbf{wielomianem charakterystycznym}.
+    Pierwiastki to \textbf{wartości własne} macierzy; ozn. $\lambda_1$, $\lambda_2$, $\lambda_3$, \ldots
+    \item Rozwiązujemy równania
+    \[
+        (\mathbf{A}-\lambda_i\mathbf{I})\cdot\mathbf{x_i}=0
+    \]
+    gdzie $\mathbf{x_i}$ to \textbf{wektory własne}.
+\end{enumerate}
+
+Uwagi:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Transponowanie nie zmienia wartości własnych macierzy.
+    \item Jeśli macierz $A$ jest symetryczna, wszystkie wartości własne są liczbami rzeczywistymi.
+\end{itemize}
+
+\section{Metody numeryczne wyznaczania wektorów i wartości własnych}
+
+\subsection{Metoda potęgowa}
+
+\todo[inline]{opisz to}
+
+\todo[inline]{opisz inne metody}
