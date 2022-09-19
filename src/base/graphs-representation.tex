@@ -1,1 +1,73 @@
-\section{Omówić metody reprezentacji grafów oraz metody przeglądania (DFS,BFS).}
+\section{Omówić metody reprezentacji grafów oraz metody przeglądania (DFS, BFS).}
+
+\subsection{Metody reprezentacji grafów}
+
+\subsubsection{Lista krawędzi}
+Złożoność pamięciowa $\Theta(E)$.
+Sprawdzenie czy istnieje krawędź $(i, j)$ jest liniowe, o ile nie ma żadnego porządku na krawędziach.
+
+\subsubsection{Macierz sąsiedztwa}
+Złożoność pamięciowa $\Theta(V^2)$.
+Sprawdzenie czy istnieje krawędź $(i, j)$ jest w czasie stałym.
+Jeśli graf jest nieskierowany to macierz jest symetryczna.
+Jeśli jest mało krawędzi (graf jest rzadki) to macierz zawiera głównie zera.
+
+\subsubsection{Lista sądziedztwa}
+
+Złożoność pamięciowa $\Theta(2E)$.
+Sprawdzenie czy istnieje krawędź $(i, j)$ jest w czasie liniowym ze względu na $d$ (stopień wierzchołka $i$).
+
+\subsection{Metody przeglądania}
+
+\subsubsection{Depth-first search}
+
+Przeszukiwanie w głąb polega na badaniu wszystkich krawędzi wychodzących z podanego wierzchołka.
+Po zbadaniu wszystkich krawędzi wychodzących z danego wierzchołka algorytm powraca do wierzchołka,
+z którego dany wierzchołek został odwiedzony.
+
+\begin{samepage}
+    \begin{verbatim}
+    function VisitNode(u):
+        oznacz u jako odwiedzony
+        dla każdego wierzchołka v na liście sąsiedztwa u:
+            jeżeli v nieodwiedzony:
+                VisitNode(v)
+    function DepthFirstSearch(Graf G):
+        dla każdego wierzchołka u z grafu G:
+            oznacz u jako nieodwiedzony
+        dla każdego wierzchołka u z grafu G:
+            jeżeli u nieodwiedzony:
+        VisitNode(u)
+    \end{verbatim}
+\end{samepage}
+
+\subsubsection{Breadth-first search}
+
+Przechodzenie grafu rozpoczyna się od zadanego wierzchołka $s$ i polega na odwiedzeniu wszystkich osiągalnych z niego wierzchołków.
+Wynikiem działania algorytmu jest drzewo przeszukiwania wszerz o korzeniu w $s$, zawierające wszystkie wierzchołki osiągalne z $s$.
+Do każdego z tych wierzchołków prowadzi dokładnie jedna ścieżka z $s$, która jest jednocześnie najkrótszą ścieżką w grafie wejściowym.
+Algorytm działa prawidłowo zarówno dla grafów skierowanych jak i nieskierowanych.
+
+\begin{samepage}
+    \begin{verbatim}
+    funkcja BreadthFirstSearch (Graf G, Wierzchołek s)
+        dla każdego wierzchołka u z G:
+            kolor[u] = biały
+            odleglosc[u] = inf
+            rodzic[u] = NIL
+        kolor[s] = SZARY
+        odleglosc[s] = 0
+        rodzic[s] = NIL
+        Q.push(s)
+        dopóki kolejka Q nie jest pusta:
+            u = Q.front()
+            Q.pop()
+            dla każdego v z listy sąsiedztwa u:
+                jeżeli v jest biały:
+                    kolor[v] = SZARY
+                    odleglosc[v] = odleglosc[u] + 1
+                    rodzic[v] = u
+                    Q.push(v)
+            kolor[u] = CZARNY
+    \end{verbatim}
+\end{samepage}
