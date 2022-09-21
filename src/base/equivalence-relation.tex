@@ -1,1 +1,52 @@
 \section{Pojęcia relacji równoważności i zbioru ilorazowego.}
+
+\subsection{Definicje}
+
+Relacja $\varrho \subseteq X \times X$.
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Relacja zwrotna - $\forall_{x\in X}\ (x\varrho x)$.
+    \item Relacja przeciwzwrotna - $\forall_{x\in X}\ \neg(x\varrho x)$.
+    \item Relacja przechodnia - $\forall_{x, y, z\in X}\ (x\varrho y \land y\varrho z) \Rightarrow x \varrho z$
+    \item Relacja symetryczna - $\forall_{x, y\in X}\ (x\varrho y \Rightarrow y \varrho x)$.
+    \item Relacja antysymetryczna - $\forall_{x, y\in X}\ (x\varrho y \land y\varrho x \Rightarrow y = x)$.
+    \item Relacja przeciwsymetryczna - $\forall_{x, y\in X}\ (x\varrho y \Rightarrow \neg(y \varrho x))$.
+    \item Relacja spójna - $\forall_{x, y\in X}\ (x\varrho y \lor y \varrho x)$.
+\end{itemize}
+
+Przykład. \textbf{Relacja częściowego porządku (POSet)} - zwrotna, przechodnia, antysymetryczna.
+
+\subsection{Pojęcia}
+
+\textbf{Relacja równoważności} – zwrotna, symetryczna i przechodnia relacja dwuargumentowa określona
+na pewnym zbiorze utożsamiająca ze sobą w pewien sposób jego elementy,
+co ustanawia podział tego zbioru na rozłączne podzbiory według tej relacji.
+Podobnie każdy podział zbioru niesie ze sobą informację o pewnej relacji równoważności.
+
+Niech $X$ będzie zbiorem, na którym określono relację równoważności $\sim$.
+\textbf{Klasą równoważności} lub \textbf{klasą abstrakcji} (także warstwą) elementu $x$ nazywa się zbiór:
+
+\[
+    [x]_\sim ={y\in X:y\sim x},
+\]
+
+czyli zbiór wszystkich elementów zbioru $X$ równoważnych z $x$.
+Jeżeli relacja równoważności znana jest z kontekstu, pisze się zwykle po prostu $[x]$.
+
+Dowolny element ustalonej klasy abstrakcji nazywa się jej \textbf{reprezentantem},
+w szczególności reprezentantem klasy $[x]$ jest element $x$.
+Każdy element $x \in X$ należy do dokładnie jednej klasy abstrakcji, mianowicie $[x]$.
+Wynika stąd, że dwie klasy równoważności odpowiadające elementom $x$ i $y$ są albo identyczne,
+co zachodzi, gdy $x\sim y$, albo rozłączne, gdy $x\nsim y$, czyli
+
+\[
+    a\sim b \text{ wtedy i tylko wtedy, gdy } [a]=[b]\text{.}
+\]
+
+W powyższy sposób na zbiorze $X$ wyznaczony jest podział na klasy abstrakcji.
+Wspomniany podział, czyli zbiór wszystkich warstw oznaczany  $X/_\sim$,
+nazywa się \textbf{przestrzenią ilorazową} lub krótko ilorazem (zbioru) $X$ przez (relację) $\sim$.
+Zasada abstrakcji mówi, że dowolnemu podziałowi zbioru odpowiada pewna relacja równoważności,
+a każda relacja równoważności ustanawia pewien podział zbioru.
+
+Relacji równoważności w zbiorze $X$ odpowiada relacja równości w przestrzeni ilorazowej $X/_\sim$.
+Własność ta umożliwia tworzenie nowych struktur przez utożsamienie niektórych elementów w zbiorze.
