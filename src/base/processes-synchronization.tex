@@ -1,1 +1,59 @@
 \section{Omówić znane metody synchronizacji procesów.}
+
+Problem synchronizacji procesów pojawia się wszędzie tam, gdzie mamy do czynienia ze współpracującymi ze sobą współbieżnymi procesami.
+Oto najczęściej spotykane przyczyny, dla których konieczna jest synchronizacja współpracujących procesów:
+
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Procesy współdzielą pewną strukturę danych —
+    Zwykle wykonania operacji na tej strukturze danych nie mogą dowolnie przeplatać się współbieżnie ze sobą.
+    Pojedyncze operacje muszą być "zatomizowane",
+    tzn. tylko jeden proces może na raz modyfikować współdzieloną strukturę danych,
+    stąd konieczność synchronizacji procesów przy dostępie do struktury danych.
+    Jest to przykład tzw. problemu sekcji krytycznej.
+    \item Wyniki działania jednego procesu stanowią dane dla innego procesu.
+    Oczywiście drugi z procesów może przetwarzać dane dopiero wówczas,
+    gdy zostaną one obliczone przez pierwszy z procesów, stąd konieczność synchronizacji działań obydwu procesów.
+    Dodatkowo, jeżeli dane zajmują dużo pamięci i są obliczane stopniowo, to drugi z procesów może informować pierwszy,
+    które dane zostały "zużyte" i można wykorzystać zajmowaną przez nie pamięć.
+    Przykładem takiego współdziałania procesów jest problem producenta-konsumenta.
+    \item Procesy korzystają z pewnej wspólnej puli zasobów, które pobierają i zwalniają wedle potrzeb.
+    Oczekiwanie na zasoby i przydzielanie ich wymaga również synchronizacji między procesami.
+    Przykładem dobrze ilustrującym taki rodzaj synchronizacji jest problem pięciu filozofów.
+\end{itemize}
+
+Zrealizowanie synchronizacji między procesami wymaga pewnych narzędzi
+i technik programistycznych, opisanych w niniejszym wykładzie.
+Na pierwszy rzut oka problem może się wydawać trywialny.
+Okazuje się jednak, że programowanie procesów współbieżnych jest bardzo trudne.
+Liczba zależności między procesami jest trudna do ogarnięcia.
+
+Analizując programy współbieżne zakładamy, że współbieżne wykonanie procesów może polegać
+na dowolnym przepleceniu wykonań poszczególnych procesów.
+Dodatkowo musimy pamiętać, że przeplatane nie są instrukcje języka programowania wysokiego poziomu,
+lecz instrukcje procesora w skompilowanym programie. Jeśli nasz program jest poprawny przy takim założeniu,
+to mamy pewność, że będzie działał poprawnie (niezależnie od realizacji systemu operacyjnego,
+parametrów technicznych komputera, zachodzących przerwań i innych procesów działających w systemie).
+
+W przypadku programów współbieżnych testowanie programów ma bardzo ograniczone zastosowanie.
+Nie jesteśmy w stanie przetestować wszystkich możliwych przeplotów wykonań procesów.
+Siłą rzeczy testy są przeprowadzane na konkretnej platformie i konkretnym komputerze.
+Tak więc pomyślne wyniki testów wcale nie gwarantują, że program będzie działał poprawnie na innej platformie,
+czy np. na szybszym komputerze.
+Jesteśmy więc skazani na weryfikowanie poprawności programów współbieżnych.
+Już w przypadku programów sekwencyjnych jest to trudne zadanie,
+a w przypadku programów współbieżnych jest to bardzo trudne.
+
+\subsection{Synchronizacja procesów za pomocą wspólnych zmiennych}
+\todo[inline]{opisz to (https://edu.pjwstk.edu.pl/wyklady/sop/scb/wyklad5/wyklad.html)}
+
+\subsubsection{Problem producenta-konsumenta}
+\subsubsection{Algorytm Dekkera}
+\subsubsection{Algorytm piekarniany}
+
+\subsection{Mechanizmy synchronizacji}
+\todo[inline]{opisz to}
+
+\subsubsection{Semafory}
+\subsubsection{Kolejki komunikatów}
+%messagebus?
+\subsubsection{Monitory}
