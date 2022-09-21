@@ -1,1 +1,50 @@
 \section{Omówić pojęcia przypadku użycia systemu i scenariusza przypadku użycia.}
+
+\subsection{Przypadek uzycia}
+
+\textbf{Przypadki użycia} (use case) są opisami sekwencji interakcji, jakie zachodzą między systemem a aktorem,
+gdzie ważne jest, by aktor osiągnął wyznaczony cel, jak np. zmienił dane profilowe w sklepie internetowym.
+
+\subsection{Scenariusz przypadku użycia}
+
+\textbf{Scenariusze przypadków} użycia to słowne opisy postępowania dla danego przypadku.
+Swoisty algorytm przedstawiony np. jako ponumerowana lista kroków.
+Tak jak przypadek użycia można opisać za pomocą cech:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Nazwa
+    \item Opis
+    \item Przepływ zdarzeń (scenariusze)
+    \item Zależności i relacje
+    \item Diagramy aktywności
+    \item Wymagania specjalne
+    \item Warunki wstępne
+    \item Warunki końcowe
+\end{itemize}
+
+\subsection{Przykład}
+
+\noindent Nazwa: Dokonaj rezerwacji\\
+Inicjator: Rezerwujący\\
+Cel: Zarezerwować pokój w hotelu\\
+Główny scenariusz:
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Rezerwujący zgłasza chęć dokonania rezerwacji
+    \item Rezerwujący wybiera hotel, datę, typ pokoju
+    \item System podaje cenę pokoju
+    \item Rezerwujący prosi o rezerwację
+    \item Rezerwujący podaje swoje potrzebne dane
+    \item System dokonuje rezerwacji i nadaje jej identyfikator
+    \item System podaje Rezerwującemu identyfikator rezerwacji i przesyła go mailem
+\end{enumerate}
+Rozszerzenia:
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Pokój niedostępny.
+    \begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+        \item System przedstawia inne możliwości wyboru
+        \item Rezerwujący dokonuje wyboru
+    \end{enumerate}
+    \item Rezerwujący odrzuca podane możliwości
+    \begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+        \item Niepowodzenie
+    \end{enumerate}
+\end{enumerate}
