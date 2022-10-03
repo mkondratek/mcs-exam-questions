@@ -1,1 +1,44 @@
 \section{Zdefiniować pojęcia asercji i niezmiennika; omówić sposób wykorzystania tych pojęć w dowodzeniu semantycznej poprawności algorytmów.}
+
+\subsection{Definicje}
+\textbf{Asercja} - warunek, który musi być prawdziwy, aby program działał poprawnie.
+Często używana jako asercja początkowa - warunek sprawdzany na wejściu do funkcji (żeby zweryfikować poprawność danych)
+i asercja końcowa - na wyjściu z funkcji (żeby zweryfikować, czy funkcja wykonała się poprawnie).
+Asercja początkowa i końcowa stanowią specyfikację algorytmu.
+\textbf{Niezmiennik} - warunek, który musi być spełniony przed i po każdej iteracji pętli.
+Może być chwilowo fałszywy podczas wykonywania iteracji.
+
+\subsection{Użycie w dowodzeniu}
+\textbf{Metoda niezmienników Floyda} -
+wybieramy w algorytmie punkty kontrolne.
+Dla każdego z punktów kontrolnych określamy asercje
+(warunki, które muszą zajść przed i po wykonaniu każdego punktu kontrolnego).
+Pokazujemy, że z prawdziwości jednej asercji wynika prawdziwość następnej.
+
+\textbf{Dowodzenie całkowitej poprawności algorytmu} -
+metoda niezmienników do udowodnienia semantycznej poprawności
+Pokazanie własności stopu - pokazujemy, że algorytm się zakończy i jesteśmy w stanie pokazać skończone ograniczenie.
+
+\textbf{Przykład}: Znalezienie maksymalnego elementu w ciągu liczb naturalnych. Asercje
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Naturalnym warunkiem początkowym będzie założenie niepustości ciągu: nie można
+    znaleźć elementu największego w zbiorze pustym. Możemy ją zapisać w postaci: $n>0$.
+    \item W $i$-tym kroku ($1\leq i<n$) element maksymalny $max\_el_i = max{max\_el_{i-1}, x_i}$
+    \item W $max\_el$ mamy element maksymalny całego ciągu tj. $max\_el = x_k$
+    dla pewnego $k < n$ oraz dla wszystkich i<n, $x_i <= max\_el$.
+\end{enumerate}
+
+\begin{samepage}
+    \begin{verbatim}
+//Asercja 1
+max_el = x0;
+i = 1;
+while (i < n) //Asercja 2
+{
+  if (xi > max_el)
+  max_el = xi;
+  i = i+1;
+}
+// Asercja 3
+    \end{verbatim}
+\end{samepage}
