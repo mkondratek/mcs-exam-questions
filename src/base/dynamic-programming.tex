@@ -1,1 +1,33 @@
 \section{Na czym polega programowanie dynamiczne? Własności i przykłady zastosowań.}
+
+
+Technika projektowania algorytmów polegająca na podziale problemu na mniejsze podproblemy względem kilku parametrów.
+Problem musi mieć pewne podzadania - tak, że metoda dziel i zwyciężaj rozwiązywałaby te same podzadania wielokrotnie.
+By tego uniknąć, stosujemy technikę spamiętywania.
+
+\subsection{Własność optymalnej podstruktury}
+Dla problemów programowania dynamicznego musi zachodzić własność optymalnej podstruktury.
+Oznacza to, że optymalne rozwiązanie problemu jest funkcją optymalnych rozwiązań podproblemów,
+czyli znając ich optymalne rozwiązania, można efektywnie wyznaczyć rozwiązanie problemu.
+
+\subsection{Metody}
+\textbf{Metoda zstępująca} z zapamiętywaniem polega na rekurencyjnym wywołaniu funkcji z wywołaniem wyników.
+Praktycznie taka sama, jak dziel i zwyciężaj, z tą różnicą, że pamiętamy już policzone rozwiązania.
+\textbf{Metoda wstępująca} polega na rozwiązywaniu wszystkich możliwych podproblemów zaczynając od tych o najmniejszym rozmiarze.
+Potencjalnie zużywamy mniej pamięci, ale może się zdarzyć, że część problemów rozwiążemy nadmiarowo.
+
+\subsection{Przykład}
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Obliczanie ciągu Fibonacciego możemy zrealizować za pomocą programowania dynamicznego.
+    W liście trzymamy rozwiązania - początkowo $[0, 1]$.
+    Potem $n-2$ razy dodajemy na koniec listy sumę dwóch ostatnich elementów.
+
+    \item Mamy planszę n x m. Na niektórych polach są diamenty.
+    Idziemy z $(n, m)$ i chcemy dojść na $(1, 1)$ zbierając jak najwięcej diamentów,
+    ale możemy iść tylko w lewo lub do góry.
+
+    \item Najdłuższy wspólny podciąg (LCS)
+
+    \item Problem plecakowy - definiujemy $A(i, j)$ jako największą możliwą wartość,
+    która może być otrzymana przy założeniu wagi mniejszej lub równej $i$, oraz pierwszych $j$ elementów.
+\end{enumerate}
