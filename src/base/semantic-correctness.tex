@@ -1,1 +1,26 @@
 \section{Zdefiniować pojęcie semantycznej poprawności algorytmu (częściowa poprawność, własność stopu, określoność obliczeń).}
+
+\textbf{Semantyczna poprawnośc algorytmu} -
+stwierdzenie, czy dany algorytm faktycznie wykonuje zadane mu zadanie poprawnie. \\
+\textbf{Poprawnośc składniowa} - stwierdzenie czy program implementuje dany algorytm poprawnie.
+Poprawność algorytmu składa się z semantycznej oraz składniowej poprawności. \\
+
+Każdy algorytm ma pewną parę własności $wp$, $wk$, gdzie $wp$ jest warunkiem początkowym, a $wk$ jest warunkiem końcowy.
+Przykład: algorytm znajdujący maksymalny element w ciągu liczb naturalnym.
+\begin{align*}
+    wp & = \{n > 0\} \\
+    wk & = \{\text{result} = x_i\text{, gdzie }x_i\text{ jest elementem tablicy oraz dla wszystkich }i\text{, }x_i < result\}.
+\end{align*}
+
+\textbf{Algorytm jest poprawny} wtw, gdy dla wszystkich danych spełniających warunek początkowy $wp$,
+algorytm kończy obliczenie i jego wyniki spełniają warunek końcowy $wk$.
+\textbf{Algorytm jest częściowo poprawny} wtw gdy dla wszystkich danych spełniających warunek początkowy $wp$,
+to jeżeli algorytm zakończy obliczenie, to wyniki spełniają warunek końcowy $wk$.
+Częściową poprawność dowodzimy poprzez podzielenie na fragmenty i wyznaczenie ich warunków początkowych i końcowych.
+\textbf{Algorytm ma własność stopu},
+jeżeli dla dowolnych danych początkowych spełniających warunek początkowy obliczenie algorytmu jest skończone.
+Własność stopu dowodzimy np. poprzez metodę licznika iteracji (umiemy wskazać górne ograniczenie na wartość licznika),
+wielkości malejącej/rosnącej
+(mamy jakieś wyrażenie, które za każdym obiegiem rośnie/maleje o stałą i umiemy wskazać ograniczenie na wartość).
+\textbf{Określoność obliczeń} - zachodzi, jeżeli dla każdych danych początkowych spełniających warunek początkowy,
+obliczenie wyniku nie jest przerwane (np. nie wystąpi dzielenie przez 0, nie przekroczymy zakresu liczb).
