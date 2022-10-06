@@ -1,1 +1,29 @@
-\section{Obliczalność i złożoność - Problemy rozstrzygalne, częściowo rozstrzygalne i nierozstrzygalne; podać przykład problemów z każdej z tych klas. Podać dowód nierozstrzygalności przykładowego problemu. }
+\section{Obliczalność i złożoność - Problemy rozstrzygalne, częściowo rozstrzygalne i nierozstrzygalne;
+podać przykład problemów z każdej z tych klas. Podać dowód nierozstrzygalności przykładowego problemu. }
+
+\subsection{Definicje}
+\textbf{Problem decyzyjny} - pytanie sformułowane w systemie formalnym, na które są możliwe dwie odpowiedzi: tak lub nie.
+Problem decyzyjny jest równoważny językowi formalnemu poprawnych rozwiązań.
+
+\textbf{Problem rozstrzygalny} - taki, dla którego istnieje algorytm,
+który dla dwolnych danych po skończonej liczbie kroków da rozwiązanie problemu.
+Przykładem takiego problemu jest problem "czy dana liczba naturalna jest pierwsza"
+- możemy sprawdzić wszystkie jej dzielniki w skończonym czasie.
+
+\textbf{Problem nierozstrzygalny} - taki, dla którego powyższy algorytm nie istnieje.
+Przykładem takiego problemu jest problem stopu, a takkże odwrotność problemu stopu.
+Problem częściowo rozstrzygalny - gdy istnieje algorytm (maszyna Turinga bez własności stopu),
+który poprawnie odpowiada tylko tak, natomiast nie istnieje algorytm poprawnie udzielający odpowiedzi i tak, i nie.
+Przykładem jest problem stopu (ale nie odwrotność problemu stopu).
+
+\subsection{Dowód nierozstrzygalności problemu stopu}
+\textbf{Problem stopu} - dla danego algorytmu i danych wejściowych odpowiada na pytanie,
+czy program zakończy się w skończonym czasie.
+
+Weźmy stop(program), który dla danego programu mówi, czy program się kończy, czy też nie.
+Zróbmy na jego podstawie złośliwą funkcję test(), która jeżeli stop(test), to zapętl\_się().
+
+Jeżeli założymy, że stop(test) jest rozstrzygalny, to musi się zakończyć odpowiedzią tak lub nie.
+Jeżeli zwróci true, to zapętlamy się i nigdy nie wychodzimy, co jest sprzecznością.
+Jeżeli zwróci false, to my wychodzimy, czyli powinniśmy zwrócić true, co również jest sprzecznością.
+Doszliśmy do sprzeczności - problem stopu nie jest rozstrzygalny.
