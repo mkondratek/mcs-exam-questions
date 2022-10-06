@@ -1,1 +1,20 @@
 \section{Model ISO OSI. Przykłady protokołów w poszczególnych warstwach.}
+
+Model odniesienia przy omawianiu sieci komputerowych pomagający zrozumieć procesy komunikacyjne zachodzące w sieci.
+Składa się z siedmiu warstw.\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    Warstwa OSI  & Jednostka         & Przykład protokołu                  \\
+    \hline
+    Aplikacji    & Dane              & HTTP, FTP                           \\
+    Prezentacji  & Dane              & TLS, MIME, ASCII                    \\
+    Sesji        & Dane              & Sockety (nawiązanie sesji TCP), RPC \\
+    Transportu   & Segment, datagram & TCP, UDP                            \\
+    Sieciowa     & Pakiet            & IPv4, IPv6                          \\
+    Łącza danych & Ramka             & PPP, ARP, Ethernet                  \\
+    Fizyczna     & Bit, symbol       & Zależne od medium (Bluetooth, WiFi) \\
+    \hline
+\end{tabular}\\
+
+W praktyce obecnie raczej używa się modelu TCP/IP, który zastępuje górne 3 warstwy jedną warstwą - aplikacji.
