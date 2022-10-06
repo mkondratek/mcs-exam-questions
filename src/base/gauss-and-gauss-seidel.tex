@@ -1,1 +1,31 @@
 \section{Rozwiązywanie układów równań liniowych: metoda eliminacji Gaussa i metoda Gaussa-Seidla.}
+
+\subsection{Układ rówań liniowych}
+
+Równanie postaci $Ax=b$, gdzie $A$ to macierz wielkości $[m x n]$, $x$ i $b$ to wektory $[m x 1]$.
+$m$ to liczba równań, a $n$ to liczba niewiadomych.
+Można przekształcić układ równań w inny, który ma ten sam zbiór rozwiązań.
+Robimy to poprzez operacje elementarne:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item dodanie do równania innego równania,
+    \item zamiana dwóch równań miejscami,
+    \item pomnożenie równania przez liczbę.
+\end{itemize}
+
+\textbf{Eliminacja Gaussa}
+Sprowadzamy macierz rozszerzoną układu równań do postaci schodkowej.
+Inaczej mówiąc, bierzemy pierwszy wiersz i odejmujemy go od wszystkich niżej, tak żeby wyzerować kolumnę.
+Postępujemy analogicznie dla kolejnych wierszy.
+Następnie odczytujemy rząd macierzy (liczbę wierszy niezerowych).
+Jeżeli jest równa liczbowi wierszy, to mamy jedno rozwiązanie.
+Jak mniej to nieskończenie wiele rozwiązań.
+
+\textbf{Metoda Gaussa-Seidla}
+Metodę tę możemy zastosować, gdy macierz jest przekątniowo dominująca - oznacza to,
+że suma wartości bezwzględnych elementów na diagonali jest większa niż suma poza diagonalą.
+Jeżeli tak nie jest, to możemy chcieć przestawić elementy tak, żeby było dobrze.
+
+Najpierw wyznaczamy początkowe wartości zmiennych, np. same zera.
+Wyliczamy wartości $x_1,\ldots, x_n$ w zależności od wszystkich innych.
+Potem iteracyjnie obliczamy po kolei $x_1, x_2, \ldots$ korzystając już z policzonych wartości.
+Kończymy, gdy zmiany są niewielkie.
