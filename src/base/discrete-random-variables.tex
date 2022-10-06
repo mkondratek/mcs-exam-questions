@@ -1,6 +1,10 @@
 \section{Dyskretne zmienne losowe oraz ich najważniejsze rozkłady.}
 
-\subsection{Dyskretne zmienne losowe}
+\subsection{Definicje}
+
+\textbf{Przestrzeń zdarzeń elementarnych} - zbiór wszystkich możliwych wyników doświadczenia losowego (np. rzut monetą - orzeł i reszka).
+
+\textbf{Zmienna losowa} - funkcja przypisująca zdarzeniom elementarnym liczby.
 
 \textbf{Zmienna losowa dyskretna} (in. o rozkładzie dyskretnym) to taka zmienna losowa,
 która przyjmuje z dodatnim prawdopodobieństwem jedynie skończoną lub nieskończoną przeliczalną liczbę różnych wartości.
@@ -13,12 +17,32 @@ która przyjmuje z dodatnim prawdopodobieństwem jedynie skończoną lub niesko�
 
 \subsection{Najważniejsze rozkałady}
 
+\subsubsection{Rozkład geometryczny}
+Opisuje prawdopodobieństwo, że odniesiemy pierwszy sukces w dokładnie $k$-tej próbie,
+gdzie każda ma prawdopodobieństwo $p$.
+\begin{gather*}
+    P(X=k)=(1-p)^{k-1}p\\
+    EX=\frac{1}{p}\\
+\end{gather*}
+
+\subsubsection{Rozkład ujemny dwumianowy (Pascala)}
+Opisuje liczbę porażek $k$ w ciągu $r+k$ niezależnych prób, gdzie każda ma prawdopodobieństwo sukcesu równe $p$.
+\begin{gather*}
+    P(X=k)=\binom{k+r-1}{r-1}(1-p)^kp^r\\
+    EX=\frac{r}{p}\\
+\end{gather*}
+
+\subsubsection{Rozkład Poissona}
+Opisuje prawdopodobieństwo wystąpienia danej liczby wydarzeń w ustalonym czasie pod warunkiem,
+że wydarzenia występują z daną stałą częstotliwością i niezależnie od czasu ostatniego wystąpienia.
+(Przykład: call center, gdzie dostajemy średnio 100 połączeń na godzinę, możemy zobaczyć ile dostaniemy w ciągu minuty).
+\begin{gather*}
+    P(X=k)=\frac{\lambda^ke^{\lambda}}{k!}, \lambda>0\\
+    EX=\lambda\\
+\end{gather*}
+
+\subsubsection{Rozkład jednostajny}
 \todo[inline]{opisz poniższe}
 
-\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item rozkład jednostajny
-    \item rozkład dwupunktowy
-    \item rozkład dwumianowy
-    \item rozkład Poissona
-    \item rozkład geometryczny
-\end{enumerate}
+\subsubsection{Rozkład dwupunktowy}
+\todo[inline]{opisz poniższe}
