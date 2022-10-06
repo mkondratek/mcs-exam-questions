@@ -32,6 +32,47 @@ Uwagi:
 
 \subsubsection{Metoda potęgowa}
 
-\todo[inline]{opisz to}
+Metoda potęgowa w wersji podstawowej służy do wyznaczenia maksymalnej
+co do modułu wartości własnej i odpowiadającego jej wektora własnego.
 
-\todo[inline]{opisz inne metody}
+Jeżeli jednak wykorzystamy fakty, że wartości
+własne macierzy odwrotnej są odwrotnościami wartości własnych macierzy danej
+oraz że modyfikacja macierzy polegająca na dodaniu do elementów jej przekątnej głównej pewnej liczby $d$
+powoduje przesunięcie wszystkich wartości własnych tej macierzy o tę samą liczbę $d$ (przesunięcie widma),
+możemy przy pomocy metody potęgowej wyznaczyć wartość własną najbliższą dowolnej liczbie.
+
+
+Rozpoczynając od dowolnego wektora $\overrightarrow{x_0}\in \mathbb{C}^n$
+o normie $\lVert \overrightarrow{x_0} \rVert_2 = 1$, obliczamy kolejno dla $k=1,2,\ldots$
+\begin{align*}
+    \overrightarrow{y_k}=A\overrightarrow{x_k} & & \overrightarrow{x_{k+1}}=\frac{\overrightarrow{y_k}}{\lVert \overrightarrow{y_k} \rVert_2}.
+\end{align*}
+Równoważnie możemy zapisać
+\[
+    \overrightarrow{x_k}=\frac{A^k\overrightarrow{x_0}}{\lVert A^k\overrightarrow{x_0} \rVert_2}.
+\]
+Wektory $x_k$ stanowią kolejne przybliżenia wektora własnego.
+Odpowiadającą mu wartość własną przybliżamy na podstawie równania
+\begin{gather*}
+(\mathbf{A}-\lambda_i\mathbf{I})
+    \cdot\mathbf{x_i}=0\\
+    \mathbf{A}\mathbf{x_i}=\lambda\mathbf{x_i}\\
+\end{gather*}
+obliczając iloraz dwóch kolejnych np. ostatnich przybliżeń wektora własnego;
+\[
+    \lambda=\frac{x_{k-1}^2}{x_k^2}=\frac{Ax_k\cdot x_k}{x_k \cdot x_k}.
+\]
+
+\subsubsection{Metoda iteracji odwrotnej (odwrotna metoda potęgowa)}
+
+Wariant metody potęgowej.
+Pozwala znaleźć najmniejszą na modół wartość własną.
+
+\subsubsection{Metoda QR}
+Nieco bardziej praktyczna dla komputerów.
+Metoda iteracyjna.
+W kroku k obliczamy QR-dekompozycję $A_k=Q_kR_k$
+($Q$ - macierz ortogonalna, czyli jej iloczyn z odwrotnością jest macierzą jedynkową,
+$R$ - macierz trójkątna górna). Potem $A_{k+1}=R_kQ_k$.
+W końcu macierz $A$ zbiegnie do macierzy trójkątnej, na przekątnej której będą wartości własne.
+Kolumny $Q$ natomiast są wektorami własnymi.
