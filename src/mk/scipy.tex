@@ -1,1 +1,40 @@
-\section{Efektywne programowanie w języku Python - Scipy - macierze rzadkie. Omów 3 rodzaje reprezentacji oraz jak z nich optymalnie korzystać.}
+\section{Efektywne programowanie w języku Python - Scipy - macierze rzadkie.
+Omów 3 rodzaje reprezentacji oraz jak z nich optymalnie korzystać.}
+
+\subsection{Motywacja}
+
+\textbf{Macierz rzadka} - macierz, w której większość elementów wynosi zero.
+Przechowywanie macierzy rzadkich w formie tablic $n\times m$ jest nieoptymalnym rozwiązaniem.
+Wiąże się bowiem z marnowaniem przestrzeni na przechowywanie licznych wartości zerio.
+
+\subsection{Scipy}
+
+Biblioteka SciPy Pythona ma wiele opcji do tworzenia, przechowywania i obsługi z rzadkimi macierzami.
+Dostępnych jest 7 różnych typów macierzy nieliniowych.
+
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item bsr\_matrix: \textbf{B}lock \textbf{S}parse \textbf{R}ow matrix
+    \item coo\_matrix: \textbf{COO}rdinate format matrix
+    \item csc\_matrix: \textbf{C}ompressed \textbf{S}parse \textbf{C}olumn matrix
+    \item csr\_matrix: \textbf{C}ompressed \textbf{S}parse \textbf{R}ow matrix
+    \item dia\_matrix: Sparse matrix with \textbf{DIA}gonal storage
+    \item dok\_matrix: \textbf{D}ictionary \textbf{O}f \textbf{K}eys based sparse matrix
+    \item lil\_matrix: Row-based \textbf{LI}nked \textbf{L}ist sparse matrix.
+\end{enumerate}
+
+\textit{dok\_matrix} - dostęp do elementów w $O(1)$; wygodne do tworzenia macierzy (niemal "element po elemencie");
+nieefektywne do obliczeń; efektywna konwersja do \textit{coo\_matrix}.
+
+
+\textit{coo\_matrix} - wygodne do tworzenia macierzy (niemal "element po elemencie");
+efektywna konwersja do i z \textit{csc\_matrix}, \textit{csr\_matrix}; brak cięcia (slicingu); brak arytmetyki.
+
+
+\textit{csc\_matrix} (\textit{csr\_matrix}) - efektywne podczas obliczeń (mnożenia / odwracania);
+ze względu na wykorzystywaną strukturę danych, bardziej efektywne cięcie (slicing) kolumn (wierszy),
+ale wolne cięcie po wierszach; wolne modifikacje zmieniajace rzadkość.
+
+%https://scipy-lectures.org/advanced/scipy_sparse/dok_matrix.html
+%https://scipy-lectures.org/advanced/scipy_sparse/coo_matrix.html
+%https://scipy-lectures.org/advanced/scipy_sparse/csc_matrix.html
+%https://scipy-lectures.org/advanced/scipy_sparse/csr_matrix.html
