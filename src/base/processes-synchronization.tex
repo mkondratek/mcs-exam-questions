@@ -43,17 +43,44 @@ Jesteśmy więc skazani na weryfikowanie poprawności programów współbieżnyc
 Już w przypadku programów sekwencyjnych jest to trudne zadanie,
 a w przypadku programów współbieżnych jest to bardzo trudne.
 
-\subsection{Synchronizacja procesów za pomocą wspólnych zmiennych}
-\todo[inline]{opisz to (https://edu.pjwstk.edu.pl/wyklady/sop/scb/wyklad5/wyklad.html)}
+\subsection{Problemy}
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item \textbf{Producenta i konsumenta} -
+    Mamy dwa rodzaje procesów: producent i konsument.
+    Producent wrzuca dane do bufora, a konsument je konsumuje.
+    Nie chcemy dodawać nowych danych, gdy bufor jest pełny, a konsument nie powinien pobierać, gdy bufor jest pusty.
+    Rozwiązanie może korzystać np. z dwóch semaforów.
+    \item \textbf{Czytelników i pisarzy} -
+    Kontrolujemy dostęp do pewnego zasobu (np. plik).
+    Zasób może odczytywać jednocześnie dowolna liczba czytelników, ale pisarz musi otrzymać zasób na wyłączność.
+    Istnieje kilka możliwości rozwiązania (faworyzujący czytelników, pisarzy, kolejka).
+    \item \textbf{Pięciu filozofów} -
+    Przy okrągłym stole siedzi 5 filozofów i każdy albo je, albo rozmyśla.
+    Przed każdym filozofem jest talerz z jedzeniem, i pomiędzy sąsiednimi filozofami jest widelec.
+    Żeby jeść, filozof musi wziąć 2 widelce leżące obok siebie.
+    Rozwiązanie to np. kelner (osobny proces zarządzający widelcami),
+    albo hierarchia (możemy wziąć tylko najpierw niższy widelec, a potem wyższy, gdy oddajemy jest odwrotnie).
+\end{itemize}
 
-\subsubsection{Problem producenta-konsumenta}
-\subsubsection{Algorytm Dekkera}
-\subsubsection{Algorytm piekarniany}
+\subsection{Metody synchronizacji}
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
 
-\subsection{Mechanizmy synchronizacji}
-\todo[inline]{opisz to}
+    \item Synchronizacja procesów za pomocą wspólnych zmiennych
+    \todo[inline]{opisz to (https://edu.pjwstk.edu.pl/wyklady/sop/scb/wyklad5/wyklad.html)}
 
-\subsubsection{Semafory}
-\subsubsection{Kolejki komunikatów}
-%messagebus?
-\subsubsection{Monitory}
+    \item Algorytm Dekkera - dla dwóch procesów
+
+    \item Algorytm piekarniany - wydawanie numerków na poczcie
+
+    \item Semafor - Zmienna całkowita przyjmująca wartości nieujemne.
+    Proces może opuścić semafor (zmniejszyć wartość o 1) albo podnieść.
+    Operacja blokuje się, gdy semafor w danej chwili ma wartość 0.
+
+    \item Mutex - Podobny do semafora o wartości 1.
+    Dodatkowym ograniczeniem jest, że proces, który zdejmuje zamek musi być tym samym, który zamek założył.
+
+    \item Kolejka komunikatów (messagebus)
+
+    \item Monitor - abstrakcyjna struktura danych
+    zezwalająca na dostęp tylko jednemu procesowi na raz (Java, blok \textit(synchronized))
+\end{itemize}
