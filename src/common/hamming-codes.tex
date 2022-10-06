@@ -1,1 +1,257 @@
 \section{Kody i kaflowania - Kody Hamminga: konstrukcja; własności korygujące.}
+
+\textbf{Odległość Hamminga} - wprowadzona przez Richarda Hamminga miara odmienności dwóch ciągów o takiej samej długości,
+wyrażająca liczbę miejsc (pozycji), na których te dwa ciągi się różnią.
+Innymi słowy jest to najmniejsza liczba zmian (operacji zastępowania elementu innym),
+jakie pozwalają przeprowadzić jeden ciąg na drugi.
+
+Przykłady:
+\begin{itemize}
+    \item odległość pomiędzy ciągami 10011101 i 10\textbf{1}11\textbf{0}01 wynosi 2,
+    \item odległość pomiędzy ciągami zagrabić i za\textbf{t}r\textbf{ą}bi\textbf{ł} wynosi 3.
+\end{itemize}
+
+\textbf{Kod Hamminga} - liniowy kod korekcyjny.
+Kod Hamminga wykrywa i koryguje błędy polegające na przekłamaniu jednego bitu (single-error correction).
+Kod ten może wykrywać (ale już nie korygować) błędy podwójne (dwa jednocześnie przekłamane bity - double-error detection).
+Jest to możliwe, gdy wykorzystany zostanie dodatkowy bit parzystości.
+
+Dla porównania: prosty kod z kontrolą parzystości nie może korygować żadnych błędów
+ani też nie może być używany do detekcji błędu na więcej niż jednym bicie.
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c| }
+    \hline
+    Pozycja bitu                    & 1     & 2     & 3     & 4     & 5     & 6     & 7     \\
+    \hline
+
+    Bit parzystości (p), danych (d) & $p_1$ & $p_2$ & $d_1$ & $p_4$ & $d_2$ & $d_3$ & $d_4$ \\
+    \hline
+
+    p1                              & ×     &       & ×     &       & ×     &       & ×     \\
+    p2                              &       & ×     & ×     &       &       & ×     & ×     \\
+    p4                              &       &       &       & ×     & ×     & ×     & ×     \\
+    \hline
+\end{tabular}\\
+
+W roku 1950 Hamming przedstawił kod $(7,4)$, który kodował 4 pozycje informacyjne jako słowo 7-bitowe,
+dodając 3 bity parzystości.
+Macierz generująca $G$ kodu $(7,4)$ i jego macierz kontroli parzystości $H$ są przedstawione poniżej:
+
+
+\begin{align*}
+    G^{T} \coloneqq \begin{pmatrix}
+                        1 & 1 & 0 & 1 \\
+                        1 & 0 & 1 & 1 \\
+                        1 & 0 & 0 & 0 \\
+                        0 & 1 & 1 & 1 \\
+                        0 & 1 & 0 & 0 \\
+                        0 & 0 & 1 & 0 \\
+                        0 & 0 & 0 & 1
+    \end{pmatrix} & &
+    H \coloneqq \begin{pmatrix}
+                    1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+                    0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+                    0 & 0 & 0 & 1 & 1 & 1 & 1
+    \end{pmatrix}
+\end{align*}
+
+\subsection{Przykład}
+Chcemy przetransmitować $1011$.
+\begin{align*}
+    p=\begin{pmatrix}
+          d_1 \\
+          d_2 \\
+          d_3 \\
+          d_4
+    \end{pmatrix} = \begin{pmatrix}
+                        1 \\
+                        0 \\
+                        1 \\
+                        1
+    \end{pmatrix}
+\end{align*}
+\begin{align*}
+    x=G^{T}p=\begin{pmatrix}
+                 1 & 1 & 0 & 1 \\
+                 1 & 0 & 1 & 1 \\
+                 1 & 0 & 0 & 0 \\
+                 0 & 1 & 1 & 1 \\
+                 0 & 1 & 0 & 0 \\
+                 0 & 0 & 1 & 0 \\
+                 0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        2 \\
+        3 \\
+        1 \\
+        2 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{align*}
+
+Zatem $0110011$ jest kodem Hamminga odpowiadającym wiadomości $1011$.
+
+Sprawdzamy parzystość.
+\begin{align*}
+    z=Hr=\begin{pmatrix}
+             1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+             0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+             0 & 0 & 0 & 1 & 1 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        2 \\
+        4 \\
+        2
+    \end{pmatrix}=
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0
+    \end{pmatrix}
+\end{align*}
+Wynikiem jest wektor zerowy - odbiorca może stwierdzić, że nie doszło do przekłamania.
+
+W przeciwnym wypadku występuje korekcja błędu.
+\[
+    r = x + e_i
+\]
+gdzie $e_i$ to wektor zerowy z jedynką na pozycji $i$.
+\[
+    Hr=H(x+e_i)=Hx+He_i
+\]
+Zauważmy, że x to oryginalna wiadomość, stąd $Hx=\mathbf{0}$.
+\[
+    r=x+e_5=
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}+
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        1 \\
+        0 \\
+        0
+    \end{pmatrix}=
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\]
+\begin{align*}
+    z=Hr=\begin{pmatrix}
+             1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+             0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+             0 & 0 & 0 & 1 & 1 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        3 \\
+        4 \\
+        3
+    \end{pmatrix}=
+    \begin{pmatrix}
+        1 \\
+        0 \\
+        1
+    \end{pmatrix}
+\end{align*}
+\textbf{Syndrom} $101$ odpowiada wartości 5 - stąd wnioskujemy, że piąty bit jest przekłamany.
+\[
+    r_{corrected}=\begin{pmatrix}
+                      0       \\
+                      1       \\
+                      1       \\
+                      0       \\
+                      \bar{1} \\
+                      1       \\
+                      1
+    \end{pmatrix}=\begin{pmatrix}
+                      0 \\
+                      1 \\
+                      1 \\
+                      0 \\
+                      0 \\
+                      1 \\
+                      1
+    \end{pmatrix}
+\]
+Dekodowanie. Najpierw, definiujemy macierz $R$.
+\begin{align*}
+    R=&\begin{pmatrix}
+           0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+           1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+           1 & 0 & 0 & 0 & 0 & 1 & 0 \\
+           0 & 0 & 0 & 0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+Dalej obliczamy otrzymaną wartość.
+\begin{align*}
+    p_r=&Rr=\begin{pmatrix}
+                0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+                1 & 0 & 0 & 0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        1 \\
+        0 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        1 \\
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{align*}
