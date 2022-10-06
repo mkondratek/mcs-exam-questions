@@ -1,1 +1,58 @@
 \section{Kodowanie informacji - Kody prefiksowe, kodowanie Huffmana.}
+
+\subsection{Kod prefiksowy}
+
+Kod prefiksowy lub przedrostkowy (ang. prefix code)
+– kod, w którym żadne ze słów kodowych nie jest przedrostkiem innego słowa;
+taki kod jest jednoznacznie dekodowalny.
+Dodatkowo każdy kod prefiksowy można reprezentować w formie drzewa (dla kodów dwójkowych to drzewo binarne).
+
+Dzięki tej cesze kody są jednoznacznie identyfikowane,
+nie ma potrzeby wstawiania dodatkowych informacji np. o tym, gdzie kończy się słowo kodowe (jest to jednoznaczne)
+albo jaką ma długość (długość każdego słowa kodowego jest znana z góry).
+Stosując kody prefiksowe, można uzyskać maksymalny stopień upakowania danych w różnych metodach kompresji.
+
+Dla przykładu weźmy kod niebędący prefiksowym:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item literze $a$ odpowiada bit $0$,
+    \item literze $b$ odpowiada bit $1$,
+    \item zaś literze $c$ dwa bity $01$
+\end{itemize}
+– kod litery $a$ jest prefiksem kodu litery $c$.
+Przy takim przyporządkowaniu nie można jednoznacznie stwierdzić,
+co oznacza np. komunikat $0110$ – może to być zarówno $cba$, jak i $abba$.
+
+Zmieniając kod na prefiksowy:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item $a$ – $0$,
+    \item $b$ – $10$,
+    \item $c$ – $11$,
+\end{itemize}
+ten sam komunikat ma jednoznaczną interpretację, tj. $aca$.
+
+\subsection{Kodowanie Huffmana}
+Kodowanie Huffmana to jedna z najprostszych i łatwych w implementacji metod kompresji bezstratnej.
+
+Algorytm Huffmana nie należy do najefektywniejszych obliczeniowo systemów bezstratnej kompresji danych,
+dlatego też praktycznie nie używa się go samodzielnie.
+Często wykorzystuje się go jako ostatni etap w różnych systemach kompresji,
+zarówno bezstratnej, jak i stratnej, np. MP3 lub JPEG.
+Pomimo że nie jest doskonały, stosuje się go ze względu na prostotę oraz brak ograniczeń patentowych.
+Jest to przykład wykorzystania algorytmu zachłannego.
+
+Dany jest alfabet źródłowy (zbiór symboli) $S=\{x_{1}, \dots, x_{n}\}$
+oraz zbiór stowarzyszonych z nim prawdopodobieństw $P=\{p_{1}, \dots, p_{n}\}$.
+Symbolami są najczęściej bajty, choć nie ma żadnych przeszkód, żeby było nimi coś innego (np. pary znaków).
+Prawdopodobieństwa mogą zostać z góry określone dla danego zestawu danych,
+np. poprzez wyznaczenie częstotliwości występowania znaków w tekstach danego języka.
+Częściej jednak wyznacza się je indywidualnie dla każdego zestawu danych.
+
+Własności kodu Huffmana są następujące:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item jest kodem prefiksowym; oznacza to, że żadne słowo kodowe nie jest początkiem innego słowa;
+    \item średnia długość słowa kodowego jest najmniejsza spośród kodów prefiksowych;
+    \item jeśli prawdopodobieństwa są różne, tzn. $p_{j}>p_{i}$,
+    to długość kodu dla symbolu $x_{j}$ jest nie większa od kodu dla symbolu $x_{i}$;
+    \item słowa kodu dwóch najmniej prawdopodobnych symboli mają równą długość.
+\end{itemize}
+Kompresja polega na zastąpieniu symboli otrzymanymi kodami.
