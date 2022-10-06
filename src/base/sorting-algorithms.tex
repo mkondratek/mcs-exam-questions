@@ -1,1 +1,32 @@
 \section{Omówić znane szybkie algorytmy sortowania przez porównanie.}
+
+\subsection{Mergesort}
+Dzielimy zbiór na 2 równe części.
+Sortujemy każdą z części osobno.
+Łączymy części w jeden posortowany ciąg.
+
+\subsection{Heapsort}
+Używamy kopca binarnego.
+Kopiec binarny to struktura, gdzie dla każdego wierzchołka, każde jego dziecko jest mniejsze.
+Dzieci wierzchołka i mamy pod indeksami $2i$ oraz $2i+1$.
+Nowy wierzchołek dodajmy poprzez wrzucenie go na koniec listy, a potem przepychanie w górę,
+aż do przywrócenia warunku kopca.
+Usuwanie wierzchołka polega na wzięciu ostatniego wierzchołka na szczyt i przepychaniu go w dół.
+
+Z elementów tworzymy kopiec binarny.
+Usuwamy po kolei wszystkie elementy kopca, konstruując posortowaną tablicę.
+
+\subsection{Quicksort}
+Z tablicy wybieramy (np. losowo) element rozdzielający, co dzieli nam tablicę na dwa fragmenty:
+mniejsze niż pivot i większe niż pivot.
+Sortujemy rekurencyjnie obydwie części.
+
+\subsection{Porównanie}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    & Mergesort    & Heapsort     & Quicksort                     \\
+    \hline
+    Zł. czasowa & $O(n\log n)$ & $O(n\log n)$ & $O(n \log n)$ ($\Theta(n^2)$) \\
+    Stabilność  & tak          & nie          & nie                           \\
+    \hline
+\end{tabular}
