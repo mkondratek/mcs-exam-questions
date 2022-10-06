@@ -1,1 +1,29 @@
 \section{Omówić znane algorytmy znajdowania najkrótszych ścieżek w grafie.}
+
+\subsection{Algorytm Dijkstry}
+Założenie: graf nie ma cykli o ujemnych długościach.
+Uogólnienie algorytmu BFS.
+Zamiast używać kolejki, używamy kolejki priorytetowej, gdzie priorytetem jest odległość od wierzchołka źródłowego.
+Trzymamy dla każdego wierzchołka odległość od źródła (początkowo nieskończoną).
+W każdym kroku algorytmu dokonujemy relaksacji, czyli sprawdzamy dla każdego dziecka,
+czy da się do niego dotrzeć krótszą ścieżką, niż znaleziona do tej pory.
+Algorytm nie działa dla grafów z ujemnymi wagami krawędzi.
+
+\subsection{Algorytm Bellmana-Forda}
+Założenie: graf nie ma cykli o ujemnych długościach.
+Wykorzystujemy fakt, że najkrótsza ścieżka musi mieć maksymalnie $n-1$ krawędzi.
+$n$ razy wykonujemy relaksację wszystkich krawędzi, tzn. dla każdej krawędzi aktualizujemy odległość od źródła.
+Jeżeli po $n$ iteracjach dalej możemy to zrobić, to znaczy że mamy cykl o ujemnej długości.
+
+\subsection{Algorytm Floyda-Warshalla}
+Definiujemy $D^k[i, j]$ jako długość najkrótszej ścieżki z wierzchołka $i$ do $j$,
+która może przechodzić wyłącznie przez wierzchołki $1,\ldots,k$.
+Algorytm to pętla po $k, i, j$, gdzie w każdym kroku aktualizujemy odległość z i do j przez odległości $i,\ldots,k$ oraz $k,\ldots,j$.
+
+\subsection{Algorytm Johnsona}
+Do grafu dodajemy dodatkowy wierzchołek $q$,
+który łączymy z wszystkimi wierzchołkami oryginalnego grafu krawędzią o wadze $0$.
+Obliczamy odległości od tego wierzchołka do wszystkich za pomocą Bellmana-Forda.
+Zmieniamy wagi każdej krawędzi z $w[s, t] = w[s, t] - h[s] + h[t]$ (gdzie $h$ to odległości z Bellmana Forda).
+Zapuszczamy Dijkstrę z wszystkich wierzchołków.
+Do wyniku dla $u, v$ z Dijkstry dodajemy $h[v] - h[u]$ z Bellmana Forda.
