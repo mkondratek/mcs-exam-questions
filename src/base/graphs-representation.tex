@@ -41,6 +41,9 @@ z którego dany wierzchołek został odwiedzony. \\
     \end{verbatim}
 \end{samepage}
 
+Wyjściem algorytmu jest pewne drzewo rozpinające przeszukiwany graf.
+Pozwala na znajdowanie spójnych składowych grafu, sortowanie topologiczne, znajdowanie mostów, znajdowanie cykli w grafie.
+
 \subsubsection{Breadth-first search}
 
 Przechodzenie grafu rozpoczyna się od zadanego wierzchołka $s$ i polega na odwiedzeniu wszystkich osiągalnych z niego wierzchołków.
@@ -71,3 +74,5 @@ Algorytm działa prawidłowo zarówno dla grafów skierowanych jak i nieskierowa
             kolor[u] = CZARNY
     \end{verbatim}
 \end{samepage}
+
+BFS pozwala na znalezienie najkrótszej ścieżki do danego wierzchołka.

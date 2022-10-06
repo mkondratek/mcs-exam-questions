@@ -1,29 +1,42 @@
-\section{Graf eulerowski, graf hamiltonowski, liczba chromatyczna grafu; definicje i związane z tymi pojęciami twierdzenia.}
+\section{Graf eulerowski, graf hamiltonowski,
+    liczba chromatyczna grafu; definicje i związane z tymi pojęciami twierdzenia.}
 
 \subsection{Graf eulerowski}
 \textbf{Graf eulerowski} - da się w nim skonstruować \textbf{cykl Eulera}, czyli cykl,
 który przechodzi przez każdą jego krawędź dokładnie raz.
 
-\textbf{Warunek konieczny:} Warunkiem koniecznym i wystarczającym na to by spójny graf nieskierowany był eulerowski jest parzystość stopni wszystkich wierzchołków.
-Natomiast warunkiem w spójnym grafie skierowanym jest taka sama liczba krawędzi wchodzących i wychodzących dla każdego wierzchołka.
+\textbf{Warunek konieczny (tw Eulera):}
+Warunkiem koniecznym i wystarczającym na to by spójny graf nieskierowany
+był eulerowski jest parzystość stopni wszystkich wierzchołków.
+Natomiast warunkiem w spójnym grafie skierowanym
+jest taka sama liczba krawędzi wchodzących i wychodzących dla każdego wierzchołka.
 
 \subsection{Graf hamiltonowski}
 \textbf{Graf hamiltonowski} - rodzaj grafu rozważany w teorii grafów i definiowany dwojako, w dwóch nieco innych znaczeniach:
 \begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item szerszym: dowolny graf zawierający ścieżkę (drogę) przechodzącą przez każdy wierzchołek dokładnie jeden raz zwaną \textbf{ścieżką Hamiltona};
+    \item szerszym: dowolny graf zawierający ścieżkę (drogę) przechodzącą przez
+    każdy wierzchołek dokładnie jeden raz zwaną \textbf{ścieżką Hamiltona};
     \item węższym: grafem hamiltonowskim jest graf zawierający \textbf{cykl Hamiltona}, tj. zamkniętą ścieżkę Hamiltona.
 \end{itemize}
 
-\textbf{Warunek konieczny:} Jeżeli graf $G$ jest hamiltonowski to dla każdego niepustego podzbioru $V^{\prime}$ zbioru wierzchołków $V(G)$ zachodzi
+\textbf{Warunek konieczny:} Jeżeli graf $G$ jest hamiltonowski
+to dla każdego niepustego podzbioru $V^{\prime}$ zbioru wierzchołków $V(G)$ zachodzi
 \[
     \omega(V(G) - V^{\prime}) \leqslant \left| V^{\prime} \right|
 \]
 gdzie $\omega (G)$ oznacza liczbę spójnych składowych grafu $G$.
 
+
+\textbf{Twierdzenie Ore:} weźmy graf spójny o liczbie wierzchołków $n \geq 3$.
+Jeżeli $deg(u)+deg(w)\geq n$ dla dowolnej pary wierzchołków $u$, $w$
+które nie są połączone krawędzią to graf $G$ jest grafem hamiltonowskim.
+
 \subsection{Liczba chromatyczna}
 
 \textbf{Liczba chromatyczna} – liczba kolorów niezbędna do optymalnego klasycznego (wierzchołkowego) pokolorowania grafu,
-czyli najmniejsza możliwa liczba $k$ taka, że możliwe jest legalne pokolorowanie wierzchołków grafu $k$ kolorami.
+czyli najmniejsza możliwa liczba $k$ taka, że możliwe jest legalne
+(wierzchołki o tych samych kolorach nie sąsiadują ze sobą)
+pokolorowanie wierzchołków grafu $k$ kolorami.
 Oznacza się ją symbolem $\chi (G)$.
 
 Problem wyznaczenia liczby chromatycznej jest NP-trudny
