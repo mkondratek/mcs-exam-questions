@@ -1,1 +1,40 @@
-\section{Modelowanie systemów liczących - Twierdzenie Little'a i jego zastosowanie w analizie modeli systemów kolejkowych systemów. Szkic dowodu twierdzenia Little'a.}
+\section{Modelowanie systemów liczących -
+Twierdzenie Little'a i jego zastosowanie w analizie modeli systemów kolejkowych systemów.
+Szkic dowodu twierdzenia Little'a.}
+
+\textbf{Prawo Little’a} – twierdzenie mówiące o tym,
+że średnia liczba rzeczy/klientów w systemie jest równa iloczynowi średniego czasu przebywania w systemie
+oraz średniego tempa ich przybywania.
+
+Prawo to jest elementem teorii kolejek – dziedziny matematyki będącej częścią badań operacyjnych.
+
+Prawo Little’a jest wyrażone wzorem:
+\[
+    L = \lambda W
+\]
+\begin{align*}
+    L = & \text{średnia liczba rzeczy/klientów w systemie/kolejce;}\\
+    \lambda = & \text{średnie tempo przybywania (intensywność napływu zgłoszeń);}\\
+    W = & \text{średni czas przebywania w systemie}
+\end{align*}
+
+Przykład: jeżeli oddział banku odwiedza średnio 10 klientów na godzinę ($\lambda$)
+i klient przebywa w nim średnio 1 godzinę ($W$),
+to średnia liczba klientów znajdujących się w oddziale ($L$) wynosi 10.
+
+\subsection{Szkic dowodu (FIFO)}
+
+\[
+    N(\tau)=\alpha(\tau)-\beta(\tau)
+\]
+gdzie $N(\tau)$ to liczba klientów w systemie w chwili $\tau$,
+$\alpha(\tau)$ to liczba klientów, którzy przyszli w czasie $[0, \tau]$,
+$\beta(\tau)$ to liczba klientów, którzy poszli w czasie $[0, \tau]$.
+
+\begin{gather*}
+    A(t)=\int_0^t N(\tau) d\tau\\
+    A(t)=\sum_{t=1}^{\alpha(t)} T(i)\\
+    \frac{1}{t}\int_0^t N(\tau) d\tau=\frac{1}{t}\sum_{t=1}^{\alpha(t)} T(i)=\frac{\alpha(t)}{t}\frac{\sum_{t=1}^{\alpha(t)} T(i)}{\alpha(t)}\\
+\end{gather*}
+
+% https://www.richardclegg.org/sites/default/files/Lecture4_05.pdf
