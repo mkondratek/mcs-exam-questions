@@ -1,1 +1,38 @@
-\section{Przedstawić i omówić hierarchię Chomsky’ego ze szczególnym uwzględnieniem występujących w niej definicji gramatyk.}
+\section{Przedstawić i omówić hierarchię Chomsky’ego
+ze szczególnym uwzględnieniem występujących w niej definicji gramatyk.}
+
+\textbf{Hierarchia Chomsky’ego} to hierarchia języków formalnych, składająca się z czterech klas:
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item typ 3 - regularne
+    \item typ 2 - bezkontekstowe
+    \item typ 1 - kontekstowe
+    \item typ 0 - rekurencyjnie przeliczalne.
+\end{itemize}
+Gramatyka to sposób opisu języka.
+Składa się ze zbioru terminali $\sum$, zbioru nieterminali $N$,
+symbolu startowego $S$ i zbioru reguł przepisywania $\alpha\longrightarrow\beta$.
+
+Na samym początku forma zdaniowa będzie się składać tylko z symbolu startowego.
+W każdym kroku możemy przekształcić formę zdaniową korzystając z reguł przepisywania.
+Do języka należą wszystkie słowa nad alfabetem terminali, które da się w ten sposób uzyskać.
+
+Każda gramatyka dopuszcza wszystkie reguły gramatyk o wyższym numerze (klasy się zawierają przez zawieranie ostre).
+
+\subsection{Język regularny}
+Gramatyka liniowa, czyli taka,
+która przekształca jeden nieterminal w słowo zawierająca ciąg terminali i co najwyżej jeden nieterminal.
+Równoważne automatom skończonym.
+
+\subsection{Język bezkontekstowy}
+Gramatyka bezkontekstowa, czyli posiadająca tylko reguły postaci $A\longrightarrow\gamma$, gdzie $A$ jest nieterminalem,
+a $\gamma$ jest dowolnym słowem.
+Równoważne niedeterministycznym automatom ze stosem.
+
+\subsection{Język kontekstowy}
+Gramatyka kontekstowa, czyli posiadająca reguły postaci $\alpha A\beta\longrightarrow\alpha\gamma\beta$,
+gdzie $A$ to nieterminal, $\alpha, \beta$ to dowolne słowa, a $\gamma$ to dowolne niepuste słowa.
+Równoważne automatom ograniczonym liniowo.
+
+\subsection{Język rekurencyjnie przeliczalne}
+Gramatyka \textit{typu 0}, czyli reguły postaci $\alpha\longrightarrow\beta$ (dowolne).
+Równoważne maszynom Turinga.
