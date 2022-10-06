@@ -1,1 +1,32 @@
 \section{Podstawowe metody indeksowania w systemach baz danych.}
+
+\textbf{Indeks} - struktura, która ma przyspieszyć wyszukiwanie w bazie danych.
+Indeks definiowany jest dla atrybutów, które nazywamy kluczami indeksu.
+
+\subsection{Typy indeksów}
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Indeks podstawowy/główny - zdefiniowany na kluczu podstawowym
+    \item Indeks dodatkowy - zdefiniowane na polach, które nie są ani podstawowe, ani nie są porządkujące
+    \item Indeks gęsty - indeks, który posiada wpis dla każdej wartości klucza wyszukiwania
+    \item Indeks rzadki - indeks, który posiada wpisy tylko dla niektórych wartości
+\end{itemize}
+
+\subsection{Metody indeksowania}
+\begin{itemize}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Wyszukiwanie binarne i ISAM - za pomocą wyszukiwania binarnego jesteśmy w stanie znaleźć dany klucz
+    w posortowanym ciągu w czasie logarytmicznym.
+    ISAM modyfikuje ten koncept, dodając dodatkowy poziom - tabelę, gdzie trzymamy indeks "cylindrów"
+    (pary klucz - adres cylindra),
+    a faktyczne klucze (pary klucz - adres rekordu) są trzymane wewnątrz cylindrów.
+    Jeżeli chcemy dodać dane do cylindra, gdzie nie ma już miejsca, tworzymy stronę "nadmiarową",
+    więc jeżeli będziemy dodawać dużo rekordów, a mało usuwać, przeszukiwanie stanie się nieefektywne.
+    \item B-drzewa - mogą być stosowane do dziedzin, gdzie mamy relację porządkującą.
+    B-drzewo jest samobalansującym drzewem (niekoniecznie binarnym), które zapewnia uporządkowanie danych,
+    oraz wyszukiwanie, dostęp, wstawianie i usuwanie w czasie logarytmicznym.
+    W praktyce zazwyczaj używa się modyfikacji: B+-drzew,
+    w których wszystkie indeksowane dane i wskaźniki do rekordów danych przechowywane są w liściach,
+    a wierzchołki służą tylko jako pomoc przy dotarciu do właściwego liścia.
+    Zmniejsza to ilość koniecznych operacji IO, jakie trzeba wykonać.
+    \item Haszowanie - indeksy haszujące przechowują liczbowy hasz na podstawie wartości kolumny.
+    Taki indeks potrafi tylko obsłużyć operację równości.
+\end{itemize}
