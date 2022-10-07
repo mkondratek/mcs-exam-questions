@@ -1,1 +1,61 @@
-\section{Obliczalność i złożoność - Definicja złożoności obliczeniowej. Klasy złożoności: P, NP, PSPACE,NSPACE; zupełność w klasie. Podać dowód NP*zupełności przykładowego problemu.}
+\section{Obliczalność i złożoność - Definicja złożoności obliczeniowej.
+Klasy złożoności: P, NP, PSPACE,NSPACE; zupełność w klasie.
+Podać dowód NP*zupełności przykładowego problemu.}
+
+\subsection{Czasowa złożoność obliczeniowa}
+Przyjętą miarą złożoności czasowej jest liczba operacji podstawowych w zależności od rozmiaru wejścia.
+Pomiar rzeczywistego czasu zegarowego jest mało użyteczny ze względu na silną zależność od sposobu realizacji algorytmu,
+użytego kompilatora oraz maszyny, na której algorytm wykonujemy.
+Dlatego w charakterze czasu wykonania rozpatruje się zwykle liczbę operacji podstawowych (dominujących).
+Operacjami podstawowymi mogą być na przykład: podstawienie, porównanie lub prosta operacja arytmetyczna.
+
+\subsection{Pamięciowa złożoność obliczeniowa}
+Podobnie jak złożoność czasowa jest miarą czasu działania algorytmu,
+tak złożoność pamięciowa jest miarą ilości wykorzystanej pamięci.
+Jako tę ilość najczęściej przyjmuje się użytą pamięć maszyny abstrakcyjnej
+(na przykład liczbę komórek pamięci maszyny RAM) w funkcji rozmiaru wejścia.
+Możliwe jest również obliczanie rozmiaru potrzebnej pamięci fizycznej wyrażonej w bitach lub bajtach.
+
+\subsection{Definicje}
+
+\textbf{Problem $P$} - problem decyzyjny, dla którego rozwiązanie można znaleźć w czasie wielomianowym.
+
+\textbf{Problem $NP$} - problem decyzyjny, dla którego rozwiązanie można zweryfikować w czasie wielomianowym.
+
+\textbf{$PSPACE$} - zbiór wszystkich problemów decyzyjnych,
+które można rozwiązać za pomocą maszyny Turinga wykorzystującej wielomianową przestrzeń.
+
+\textbf{$NPSPACE$} - zbiór wszystkich problemów decyzyjnych,
+które można rozwiązać za pomocą niedeterministycznej maszyny Turinga wykorzystującej przestrzeń.
+
+% https://stackoverflow.com/questions/1857244/what-are-the-differences-between-np-np-complete-and-np-hard
+% Porblem NP-trudny nie musi być decyzyjny (problem stopu); problem NP-zupełny można zredukować do NP w czasie wielomianowym
+
+Pytanie, czy klasa $P$ jest tym samym co $NP$, jest jednym z problemów milenijnych,
+za których rozwiązanie przewidziano nagrodę w wysokości 1 miliona dolarów.
+Każdy problem z klasy $P$ jest również w klasie $NP$,
+nie wiadomo jednak czy istnieją problemy klasy $NP$, które nie są problemami klasy $P$.
+
+\subsection{Dowód NP*zupełności problemu 4-SAT}
+
+\subsubsection{4-SAT jest $NP$}
+Problem jest $NP$, jeśli możemy zweryfikować jego rozwiązanie w czasie wielomianowym.
+Mając dane przypisanie zmiennych, możemy w liniowy sposób przejść po formule i sprawdzić jej wartościowanie.
+
+\subsubsection{4-SAT jest $NP$-trudny}
+
+Aby pokazać, że 4-SAT jest $NP$-trudny, zredukujemy go do znanego problemu $NP$-trudnego.
+Dokonamy redukcji z 3-SAT do 4-SAT.
+Do każdej klauzuli $c$ formuły problemu 3-SAT dodajemy literał $a$ lub $\bar{a}$.
+Niech $c=x \lor y \lor z$;
+zamieniamy $c$ na $c'=(x \lor y \lor z \lor a) \land (x \lor y \lor z \lor \bar{a})$.
+Po dokonaniu tej transformacji zachodzą:
+\begin{enumerate}[itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item jeśli początkowy 3-SAT ma spełniające wartościowanie, to skonstruowany 4-SAT również je ma (to samo!),
+    ponieważ zbiór klauzul jest złożony ze zmiennej i jej negacji - nie robi różnicy.
+    \item jeśli skonstruowany 4-SAT jest spełniony dla jakiegoś,
+    $(x \lor y \lor z \lor a) \land (x \lor y \lor z \lor \bar{a})$, to początkowy 3-SAT również jest spełniony,
+    ponieważ $a$ i $\bar{a}$ się dopełniają, zatem formuła musi być spełniona przez jakieś inny literał prócz $a$.
+\end{enumerate}
+
+4-SAT jest $NP$*zupełny.
